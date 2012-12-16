@@ -1,0 +1,18 @@
+#!/bin/sh
+# tmuxのパス設定
+tmuxpathfile=~/.tmux.path
+if [ -s ${tmuxpathfile} ]; then
+    read tmuxpath < ${tmuxpathfile}
+    if [ -s ${tmuxpath} ]; then
+        TMUX=${tmuxpath}
+    else
+        TMUX=tmux
+    fi
+fi
+
+COPY=`$TMUX save-buffer -`
+echo -n "$COPY" | xsel --clipboard --input
+
+# メッセージ表示
+LINES=`echo "$COPY" | wc -l | tr -d ' '`
+$TMUX display-message "Copy: $LINES lines"

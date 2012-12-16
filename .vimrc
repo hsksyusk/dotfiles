@@ -1,7 +1,7 @@
 " テーマ
-:colorscheme darkblue
+" :colorscheme darkblue
 
 " クリップボード共有
-set clipboard=unnamed
-nnoremap yy yy"+yy
-vnoremap y ygv"+y
+set clipboard=unnamedplus,autoselect
+"nnoremap yy yy"+yy
+"vnoremap y ygv"+y
